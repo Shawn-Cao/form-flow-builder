@@ -1,0 +1,24 @@
+# sample form for restaurant ordering system
+# features: choice, optional, hiding, required field
+data:
+  orderItems:
+    - name
+    - spicyness 
+  payment:
+    cardNumber
+    name
+    code
+    expiration
+    postcode
+  delivery:
+    method
+    address
+fields:
+  - name: orderItems
+    type: repeated
+flow:
+
+
+
+
+# with pagination? - try nesting

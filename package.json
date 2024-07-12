@@ -1,0 +1,26 @@
+{
+  "name": "form-flow-builder",
+  "version": "0.1.0",
+  "description": "something helpful for dynamic forms, to be updated",
+  "main": "index.js",
+  "scripts": {
+    "build": "cp index.js pages/lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawnca/form-flow-builder.git"
+  },
+  "keywords": [
+    "form",
+    "flow",
+    "builder",
+    "dynamic"
+  ],
+  "author": "Shawn Cao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shawnca/form-flow-builder/issues"
+  },
+  "homepage": "https://github.com/shawnca/form-flow-builder#readme"
+}
