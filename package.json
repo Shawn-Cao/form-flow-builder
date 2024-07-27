@@ -4,7 +4,8 @@
   "description": "something helpful for dynamic forms, to be updated",
   "main": "index.js",
   "scripts": {
-    "build": "cp index.js pages/lib",
+    "build": "rm -rf pages/lib/* && cp index.js pages/lib/form-flow-builder.js && cp node_modules/js-yaml/dist/js-yaml.mjs pages/lib/js-yaml.js",
+    "start": "http-server ./pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/shawnca/form-flow-builder/issues"
   },
-  "homepage": "https://github.com/shawnca/form-flow-builder#readme"
+  "homepage": "https://github.com/shawnca/form-flow-builder#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "yaml": "^2.4.5"
+  }
 }
