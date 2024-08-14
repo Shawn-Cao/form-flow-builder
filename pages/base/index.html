@@ -1,16 +1,20 @@
 <html>
-    <head>
-        <link rel="modulepreload" href="/lib/form-flow-builder.js" />
-    </head>
-    <body>
-        <h1>simple form</h1>
-        <div id="my-form"></div>
-    <script src="form.yaml" type="module"></script>
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- use import-map.json after https://github.com/whatwg/html/issues/10233 -->
+    <link rel="modulepreload" href="/lib/import-map.js" type="application/json" />
+    <link rel="modulepreload" href="/lib/form-flow-builder.js" />
+</head>
+<body>
+    <h1>simple form</h1>
+    <div id="my-form"></div>
     <script type="module">
         import formFlowBuilder from "/lib/form-flow-builder.js";
-        import jsYaml from "js-yaml.min.js"
-        const formDef = jsYaml.load('./form/yaml')
-        formFlowBuilder.parse("./form.yaml").attach();
+        fetch('./form.yaml')
+            .then(response => response.text())
+            .then(yaml => formFlowBuilder.parse(yaml))
+            .then(htmlElement => formFlowBuilder.attachHtml('my-form', htmlElement))
+            .catch(console.error)
     </script>
-    </body>
+</body>
 </html>
