@@ -23,3 +23,10 @@ flow:
 
 # demo feature, if page URL param contains form entrys,
 #   initialize data and skip question
+
+# field name specification & convention:
+#   name - name attribute of the form input, must be unique
+#   widget - rendering widget to be used for the form field
+#   type - input type to concatenate to, infers widget type
+#   
+#   description - instruction text for a form field

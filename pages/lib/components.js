@@ -4,11 +4,11 @@
 export const form = () => document.createElement('form');
 
 // 'text' is required as the default component
-export const text = ({ text }) => {
+export const text = ({ description }) => {
     const wrapper = document.createElement('div');
-    wrapper.appendChild(document.createTextNode(text));
+    wrapper.appendChild(document.createTextNode(description));
     return wrapper;
 }
 
 
-// NOTE: how to manage components live using plain JS? No support for now
+// NOTE: how to manage widgets live using plain JS? No support for now
