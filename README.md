@@ -1,4 +1,4 @@
-# form-builder
+## form-builder
 Trying to generalize something out of a few projects using dynamic forms
 
 1. I need something like the famous react-jsonschema-form. But with more support for view changes.
@@ -7,8 +7,7 @@ Trying to generalize something out of a few projects using dynamic forms
 4. The base features should be easy to use and learn. Must support tree shaking with good examples
 
 
-
-# New prologue
+# New (current) prologue
 (should be extended)
 In my heart, I do believe that a form can be express with rigorous and normalized language, so that programming on the form behavies determinitsically. But in reality, the express becomes unprehendable to humans, given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are layered(?), with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
 

@@ -33,5 +33,9 @@
     "@babel/preset-react": "^7.27.1",
     "@types/js-yaml": "^4.0.9",
     "jest": "^29.7.0"
-  }
+  },
+  "files": [
+    "index,js",
+    "/lib"
+  ]
 }

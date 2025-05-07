@@ -1,12 +1,16 @@
 // @global 
 
-const builder = {};
+// const builder = {};
 
-builder.build = () => {};
+// builder.build = () => {};
 
-builder.attachHTML = (elementId) => {
-    window.document.getElementById(elementId)
-        .replaceChild(builder.build());
-}
+// builder.attachHTML = (elementId) => {
+//     window.document.getElementById(elementId)
+//         .replaceChild(builder.build());
+// }
 
-export default builder;
+// export default builder;
+
+echo "dummy package";
+
+module.export(() => {});
