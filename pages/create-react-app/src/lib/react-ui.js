@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { orderFields } from './form-router';
+import { initializeData, orderFields } from './form-router';
 import findComponent from './react-ui-components';
 
 /**
@@ -10,33 +10,39 @@ import findComponent from './react-ui-components';
  * @props.formSpec: form specifications as an object
  * @props.components - custom components, overrides built-in ones
  * @props.data initial data - optional, default to {}
- * @props.onChange -  change handler, also update data to outside if props.data is passed in
+ * @props.onChange - change handler. Components should pass changed field name like {[name]: e.target.value}
  * @props.onSubmit submit button handler - validation runs before
  * @props.onError optional external error handlder.
  */
 export const Form = (props) => {
-    const [formData, setFormData] = useState(props?.data || {});
-    if (props.data !== formData) {
-        setFormData(props.data);
+    const [formData, setFormData] = useState(initializeData(props.formSpec, props.data));
+    // allows data override through parent data change
+    const [lastPropsData, setLastPropsData] = useState(props.data);
+    if (lastPropsData !== props.data) {
+        console.log('External data changed! Overriding corresponding form data fields.')
+        setLastPropsData(props.data);
+        setFormData({ ...formData, ...props.data });
     }
 
     // for performance, field component should emit events with field {name:value}
-    // eslint-disable-next-line
     const changeHandler = (fieldData) => {
+        console.log('onchange field data: ', fieldData, 'formData:', formData);
         const newFormData = { ...formData, ...fieldData };
-        console.log('new form data: ', formData);
+        console.log('new form data: ', newFormData);
         setFormData(newFormData); // TODO: support deep merge
-        props?.onChange?.(newFormData);
+        return props?.onChange?.(newFormData);
     }
 
     const orderedFields = orderFields(props.formSpec, formData);
     const components = orderedFields.map(fieldSpec => {
         const Component = props.components?.[fieldSpec.type]
             || findComponent(fieldSpec);
+        const name = fieldSpec.name;
         return (
             <Component
                 {...fieldSpec}
-                key={fieldSpec.name}
+                key={name}
+                value={formData[name]}
                 onChange={changeHandler}
                 formData={formData}
             />

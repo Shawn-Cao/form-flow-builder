@@ -18,6 +18,10 @@ const formSpec = {
         gender: {
             type: 'string',
             options: ['male', 'female', 'other'],
+        },
+        motherPlanet: {
+            type: 'string',
+            defaultValue: 'Earth',
         }
     },
 };
@@ -25,7 +29,7 @@ const formSpec = {
 
 function App() {
   // optionally pass fown formData to 'control' the form. (if listening form event is not enough)
-  // const [formData, updateData] = useState({});
+  // const [formData, setFormData] = useState({});
   return (
     <div className="App">
       <header className="App-header">

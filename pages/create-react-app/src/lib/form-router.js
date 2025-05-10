@@ -16,3 +16,20 @@ export const orderFields = (formSpec, formData) => {
         }))
     }
 };
+
+/**
+ * 
+ * @param formSpec:  fields
+ * @param initialData: optional data that are preknown
+ * NOTE: we should differentiate default data from no-input, vs user viewed data.
+ *   This is because in mission critical projects, data should be seen by the user first to be valid (reviewed).
+ */
+export const initializeData = (formSpec, initialData) => {
+    const data = initialData ?? {};
+    if (typeof formSpec?.fields === 'object') {
+        Object.entries(formSpec.fields).forEach(([fieldName, fieldSpec]) => {
+            data[fieldName] = data[fieldName] ?? fieldSpec.defaultValue;
+        })
+    }
+    return data;
+};

@@ -20,3 +20,8 @@
 .App-section {
   min-height: 10em;
 }
+
+.App form label {
+  display: block;
+  margin: 5px;
+}

@@ -1,25 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 
 // plain HTML text input https://www.w3schools.com/html/html_form_input_types.asp
-export const TextInput = ({ name, description, value, onChange, onError, formData = {} }) => {
-    const [value, setValue] = useState(formData[name] || defaultValue || undefined);
-
-    // handle parent value change while still own the data ? well, maybe shouldn't
-    if (formData[name] !== value) {
-        console.log(`Parent formData changed. Updating ${name} field value from ${value} to ${formData[name]}`)
-        setValue(formData[name]);
-    }
-    const changeHandler = (e) => {
-        setValue(e.target.value);
-        // TODO: validate, and optionally skip onChange based on config
-        // if (validateOnChange) {
-        //     const errors = validate(value);
-        //     errors && onError(errors);
-        // }
-        if (onChange) {
-            return onChange({ name, value: e.target.value });
-        }
-    }
+export const TextInput = ({ name, description, value = '', onChange, error, formData = {} }) => {
     return (
         <label>
             {description || `${name}: `}
@@ -28,22 +11,14 @@ export const TextInput = ({ name, description, value, onChange, onError, formDat
                 type="text"
                 aria-label={name}
                 value={value}
-                onChange={changeHandler}
+                onChange={(e) => onChange({[name]: e.target.value})}
             />
         </label>
     );
 }
 
 // plain HTML number input
-export const NumberInput = ({ name, description, defaultValue, onChange, onError, formData = {} }) => {
-    const [value, setValue] = useState(formData[name] || defaultValue || undefined);
-    const changeHandler = (e) => {
-        const updatedValue = setValue(e.target.value);
-        if (onChange) {
-            return onChange({ name, value: e.target.value });
-        }
-        return updatedValue;
-    }
+export const NumberInput = ({ name, description, value = 0, onChange, onError, formData = {} }) => {
     return (
         <label>
             {description || `${name}: `}
@@ -52,43 +27,39 @@ export const NumberInput = ({ name, description, defaultValue, onChange, onError
                 type="number"
                 aria-label={name}
                 value={value}
-                onChange={changeHandler}
+                onChange={(e) => onChange({[name]: e.target.value})}
             />
         </label>
     );
 }
 
 // TODO: html select
-export const SelectInput = ({ name, description, defaultValue, onChange, onError }) => {
-    const [value, setValue] = useState(defaultValue || '');
-    const changeHandler = (e) => {
-        const updatedValue = setValue(e.target.value);
-        if (onChange) {
-            return onChange({ name, value: e.target.value });
-        }
-        return updatedValue;
-    }
+export const SelectInput = ({ name, description, value = '', onChange, options = [], onError, formData = {} }) => {
     return (
         <label>
-            {description}
-            <input
+            {description || `${name}: `}
+            <select
                 name={name}
-                type="number"
                 value={value}
-                onChange={changeHandler}
-            />
+                onChange={(e) => onChange({[name]: e.target.value})}
+            >
+                {options.map(option => (<option value={option} key={option}>{option}</option>))}
+            </select>
         </label>
     );
 }
 
 const findReactComponent = ({ type, constraint, options }) => {
+    if (options) {
+        return SelectInput;
+    }
     switch (type) {
         case 'string':
-            return options ? SelectInput : TextInput;
+            return TextInput;
         case 'number':
             return NumberInput;
         default:
-            console.warn(`Component not found! Field specificated type "${type}" does not match to a built'in component, you can create your own one.`);
+            console.warn(`Component not found! Field specificated type "${type}" does not match to a built-in component, you can create your own one.`);
             return () => {};
     }
 }
