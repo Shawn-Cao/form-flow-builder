@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
-import Form from 'form-flow-builder/lib/react-ui';
+import { Form } from './lib/react-ui';
 
 const formSpec = {
     fields: {
@@ -9,7 +9,7 @@ const formSpec = {
             type: 'string',
         },
         age: {
-            type: 'integer',
+            type: 'number',
             constraints: {
                 min: 0,
                 max: 200,
@@ -24,6 +24,7 @@ const formSpec = {
 
 
 function App() {
+  // optionally pass fown formData to 'control' the form. (if listening form event is not enough)
   // const [formData, updateData] = useState({});
   return (
     <div className="App">
@@ -39,7 +40,9 @@ function App() {
       </header>
       <section className="App-section">
         {/* TODO support templating within the form (as child?) */}
-        <Form onSubmit={window?.echo} />
+        <Form
+          formSpec={formSpec}
+          onSubmit={(formData) => window?.alert(JSON.stringify(formData))} />
       </section>
     </div>
   );

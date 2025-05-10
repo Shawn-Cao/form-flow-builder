@@ -1,3 +1,12 @@
+# Ejected and Customized create-react-app
+
+### changes
+
+1. added library source code path to babel transpiling lib modules for faster development cycle. ie. added `include: [paths.appSrc, formLibSrc]` in webpack config when resolving files through babel-loader.
+
+### original README below
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
