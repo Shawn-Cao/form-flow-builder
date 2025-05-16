@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import { Form } from './lib/react-ui';
 
-const formSpec = {
+const demoFormSpec = {
     fields: {
         name: {
             type: 'string',
@@ -28,8 +28,14 @@ const formSpec = {
 
 
 function App() {
-  // optionally pass fown formData to 'control' the form. (if listening form event is not enough)
-  // const [formData, setFormData] = useState({});
+  const [formSpec, setFormSpec] = useState(JSON.stringify(demoFormSpec, null, 2));
+  let error, workingSpec;
+  try {
+    workingSpec = JSON.parse(formSpec);
+  } catch(err) {
+    error = err;
+  }
+  // optionally pass fown formData to 'control' the form. (if listening form event onChange/onSubmit is not enough)
   return (
     <div className="App">
       <header className="App-header">
@@ -42,11 +48,17 @@ function App() {
           React UI demo based on create-react-app
         </a>
       </header>
+
+      <section className="App-section">
+        <p>Form specification in JSON {error ? `has error: ${error}` : 'is valid.'}</p>
+        <textarea value={formSpec} onChange={e => setFormSpec(e.target.value)} style={{height: '20em', width: '90%'}} />
+      </section>
+
       <section className="App-section">
         {/* TODO support templating within the form (as child?) */}
         <Form
-          formSpec={formSpec}
-          onSubmit={(formData) => window?.alert(JSON.stringify(formData))} />
+          formSpec={workingSpec ?? demoFormSpec}
+          onSubmit={(formData) => window?.alert(JSON.stringify(formData, null, 2))} />
       </section>
     </div>
   );
