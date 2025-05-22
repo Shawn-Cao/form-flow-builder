@@ -1,4 +1,4 @@
-import { initializeData, orderFields } from '../form-router';
+import { initializeData, orderFields } from '../form-spec-helper';
 
 describe('orderfields', () => {
     it('should transform fields from ordered object fields to array', () => {

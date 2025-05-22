@@ -1,30 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+import { demoFormSpec } from './lib/form-spec-demos';
 import { Form } from './lib/react-ui';
-
-const demoFormSpec = {
-    fields: {
-        name: {
-            type: 'string',
-        },
-        age: {
-            type: 'number',
-            constraints: {
-                min: 0,
-                max: 200,
-            }
-        },
-        gender: {
-            type: 'string',
-            options: ['male', 'female', 'other'],
-        },
-        motherPlanet: {
-            type: 'string',
-            defaultValue: 'Earth',
-        }
-    },
-};
 
 
 function App() {

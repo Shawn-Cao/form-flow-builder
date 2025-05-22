@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { initializeData, orderFields } from './form-router';
+import { initializeData, orderFields } from './form-spec-helper';
 import findComponent from './react-ui-components';
 
 /**
@@ -7,12 +7,12 @@ import findComponent from './react-ui-components';
  */
 
 /**
- * @props.formSpec: form specifications as an object
- * @props.components - custom components, overrides built-in ones
- * @props.data initial data - optional, default to {}
- * @props.onChange - change handler. Components should pass changed field name like {[name]: e.target.value}
- * @props.onSubmit submit button handler - validation runs before
- * @props.onError optional external error handlder.
+ * @param props.formSpec: form specifications as an object
+ * @param props.components - custom components, overrides built-in ones
+ * @param props.data initial data - optional, default to {}
+ * @param props.onChange - change handler. Components should pass changed field name like {[name]: e.target.value}
+ * @param props.onSubmit submit button handler - validation runs before
+ * @param props.onError optional external error handlder.
  */
 export const Form = (props) => {
     const [formData, setFormData] = useState(initializeData(props.formSpec, props.data));
