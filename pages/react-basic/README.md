@@ -1,6 +1,6 @@
 # Ejected and Customized create-react-app
 
-### changes
+### modified
 
 1. added library source code path to babel transpiling lib modules for faster development cycle. ie. added `include: [paths.appSrc, formLibSrc]` in webpack config when resolving files through babel-loader.
 
