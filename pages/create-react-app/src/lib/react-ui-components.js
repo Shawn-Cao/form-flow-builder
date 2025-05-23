@@ -1,5 +1,13 @@
 import React from 'react';
 
+export const Paginator = ({ childern }) => {
+    return (
+        <div>
+            {childern}
+            <button onClick={() => {}}>Next</button>
+        </div>
+    )
+};
 
 // plain HTML text input https://www.w3schools.com/html/html_form_input_types.asp
 export const TextInput = ({ name, description, value = '', onChange, error, formData = {} }) => {
@@ -15,7 +23,7 @@ export const TextInput = ({ name, description, value = '', onChange, error, form
             />
         </label>
     );
-}
+};
 
 // plain HTML number input
 export const NumberInput = ({ name, description, value = 0, onChange, onError, formData = {} }) => {
@@ -31,7 +39,7 @@ export const NumberInput = ({ name, description, value = 0, onChange, onError, f
             />
         </label>
     );
-}
+};
 
 // TODO: html select
 export const SelectInput = ({ name, description, value = '', onChange, options = [], onError, formData = {} }) => {
@@ -47,7 +55,7 @@ export const SelectInput = ({ name, description, value = '', onChange, options =
             </select>
         </label>
     );
-}
+};
 
 const findReactComponent = ({ type, constraint, options }) => {
     if (options) {
@@ -62,6 +70,6 @@ const findReactComponent = ({ type, constraint, options }) => {
             console.warn(`Component not found! Field specificated type "${type}" does not match to a built-in component, you can create your own one.`);
             return () => {};
     }
-}
+};
 
 export default findReactComponent;

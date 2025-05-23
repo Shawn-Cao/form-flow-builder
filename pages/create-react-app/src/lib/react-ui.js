@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { initializeData, orderFields } from './form-spec-helper';
-import findComponent from './react-ui-components';
+import { validate } from './handlers';
+import findComponent, { Paginator } from './react-ui-components';
 
 /**
  * TODO: set up compiling lib module so create-react-app work out-of-the-box. developing right here first
@@ -50,14 +51,29 @@ export const Form = (props) => {
     });
     const submitHandler = (event) => {
         event.preventDefault(); // still propagate the event
+        const errors = validate(formData);
+        if (errors) {
+            // TODO: display error and return unsubmitted;
+            return;
+        }
         return props.onSubmit ? props.onSubmit(formData) : console.log(formData);
     }
-    const fields = (
+    const isMultiPage = props.formSpec.pages
+    if (isMultiPage) {
+        return (
+            <form onSubmit={submitHandler}>
+                <Paginator>
+                    {components}
+                    <input type="submit" />
+                </Paginator>
+            </form>
+        )
+    }
+    return (
         <form onSubmit={submitHandler}>
             {components}
             <input type="submit" />
-      </form>
+        </form>
     )
-    return fields;
 };
 

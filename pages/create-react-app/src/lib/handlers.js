@@ -12,32 +12,7 @@ const handlers = {
 
 }
 
-// TODO: move to demo
-const formSpec = {
-    fields: {
-        name: {
-            type: 'string',
-        },
-        age: {
-            type: 'integer',
-            constraints: {
-                min: 0,
-                max: 200,
-            }
-        },
-        gender: {
-            type: 'string',
-            options: ['male', 'female', 'other'],
-        }
-    },
-    validation: (formData) => {
-        const errors = [];
-        if (formData.name === 'John' && formData.gender === 'female') {
-            errors.push('John isn\'t typically a female name');
-        }
-        return errors.length ? errors : undefined;
-    }
-};
+
 
 /**
  * validation(onChange) is where a DSL is needed. For now we can just support own field validation and let the DSL evolve.
@@ -51,6 +26,7 @@ export const validate = (formSpec, formData) => {
                 .map(([constraintName, constraintValue]) => validators[constraintName]?.(formData[fieldName], constraintValue))
                 .reduce(mergeErrors, []);
         }
+        return undefined
     }).reduce(mergeErrors, []);
     // 2. cross validation
     if (typeof formSpec.validation === 'function') {

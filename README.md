@@ -21,19 +21,21 @@ I think this is the best way to describe a form:
 3. Presentational demands should be more liberal. We should offer more options. (premium services?)
 4. Form behaviors (eg. fetch) can be normalized, but why not just use plain programming languages of choice?
 5. Toolings should provide:
-    1. Useability validation: eg. field name uniqueness, routing navigable to the end
+    1. Usability validation: eg. field name uniqueness, routing navigable to the end
     2. Automated testing. Enforce above, plus configurable tests, edge cases. (again may not be fully normalizable)
 6. Server-side processing should be based on above. And be a premium service possibility. Also because of this, we should borrow ideas from relevant servers-side works, like Protocol Buffers. (Same way because SOAP/XML is dead, we should avoid their mistakes)
 
 
 ## implementation notes
 ### supported features
-1. Built-in components: React (TODO: HTML)
+1. Built-in components: React (TODO: HTML, Svelte?)
 2. State management using plain state hooks
+3. runtime validation: onChange, onSubmit
 
 ### planned features
 1. Multi-page UI with dynamic routing
 2. Mirror React-hook-form behavior since we take full responsibility. Support all through options
 3. hold form def/value/error? object and importable from anywhere (helps with validation) (React needs to useEffect?)
 4. integration test helpers (where own tests can't cover. eg, accept URL params and localStorage)
-5. other frameworks (Svelte?)
+5. build-time validation
+6. field annotations: pristine, prepopulated, reviewed, ...

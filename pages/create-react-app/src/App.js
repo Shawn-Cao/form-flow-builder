@@ -6,6 +6,7 @@ import { Form } from './lib/react-ui';
 
 
 function App() {
+  // force form recreation to support live editing
   const [formSpec, setFormSpec] = useState(JSON.stringify(demoFormSpec, null, 2));
   let error, workingSpec;
   try {
