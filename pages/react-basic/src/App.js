@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import { demoFormSpec } from './lib/form-spec-demos';
-import { Form } from './lib/react-ui';
+// create-react-app doesn't compile jsx in libraryes, hence importing partially compiled here.
+import { FormReact as Form } from 'form-flow-builder/main.js';
+import { demoFormSpec } from 'form-flow-builder/lib/form-spec-demos.js';
 
 
 function App() {

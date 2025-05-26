@@ -2,7 +2,9 @@
 
 ### modified
 
-1. added library source code path to babel transpiling lib modules for faster development cycle. ie. added `include: [paths.appSrc, formLibSrc]` in webpack config when resolving files through babel-loader.
+<!-- 1. added library source code path to babel transpiling lib modules for faster development cycle. ie. added `include: [paths.appSrc, formLibSrc]` in webpack config when resolving files through babel-loader. -->
+1. Partially compile source so react-scripts (in create-react-app) can load the library 
+2. to develop on local, run `npm link pages/react-basic/node_modules/react` at project root to fix [this issue](https://react.dev/warnings/invalid-hook-call-warning). (Or try `npm instal --production` when testing apps in /pages)
 
 ### original README below
 

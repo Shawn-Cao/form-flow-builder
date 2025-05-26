@@ -2,9 +2,13 @@
   "name": "form-flow-builder",
   "version": "0.1.0",
   "description": "something helpful for dynamic forms, to be updated",
-  "main": "index.js",
+  "main": "main.cjs.js",
+  "type": "module",
+  "module": "main.js",
   "scripts": {
-    "build": "rm -rf pages/lib/* && cp index.js pages/lib/form-flow-builder.js && cp node_modules/js-yaml/dist/js-yaml.mjs pages/lib/js-yaml.js",
+    "build-old": "rm -rf pages/lib/* && cp index.js pages/lib/form-flow-builder.js && cp node_modules/js-yaml/dist/js-yaml.mjs pages/lib/js-yaml.js",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "start": "http-server ./pages",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.js"
   },
@@ -29,14 +33,22 @@
     "yaml": "^2.4.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
     "@babel/preset-env": "^7.27.1",
     "@babel/preset-react": "^7.27.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-replace": "^6.0.2",
     "@types/js-yaml": "^4.0.9",
     "jest": "^29.7.0",
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "rollup": "^4.41.0"
   },
   "files": [
-    "index,js",
+    "main.js",
+    "main.cjs.js",
     "/lib"
   ]
 }
