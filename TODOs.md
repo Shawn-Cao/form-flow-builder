@@ -1,1 +1,0 @@
-try out HTML import and plain JS for pages/base
