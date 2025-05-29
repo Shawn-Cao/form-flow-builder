@@ -10,7 +10,7 @@ Trying to generalize something out of a few projects using dynamic forms
 
 # New (current) prologue
 (should be extended)
-In my heart, I do believe that a form can be expressed with rigorous and normalized language, so that programmes based on the form specification behavies determinitsically. But, in reality, the expression becomes uncomprehendable to humans, given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are layered(?), with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
+From what I learned, I do believe that a form can be expressed with rigorous and normalized language, so that programmes based on the form specification behavies determinitsically. But, in reality, the expression easily becomes lengthy and uncomprehendable to humans. Given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are layered(?), with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
 
 I think this is the best way to describe a form:
 
@@ -35,7 +35,8 @@ I think this is the best way to describe a form:
 ### planned features
 1. Multi-page UI with dynamic routing
 2. Mirror React-hook-form behavior since we take full responsibility. Support all through options
-3. hold form def/value/error? object and importable from anywhere (helps with validation) (React needs to useEffect?)
+3. hold form def/value/error object and importable from anywhere (helps with validation) (React needs to useEffect?)
+    - For this to work, we add tentative input when error comes, and block(?) nagivation on error
 4. integration test helpers (where own tests can't cover. eg, accept URL params and localStorage)
 5. build-time validation
 6. field annotations: pristine, prepopulated, reviewed, ...
