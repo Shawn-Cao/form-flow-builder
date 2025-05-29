@@ -28,7 +28,7 @@ I think this is the best way to describe a form:
 
 ## implementation notes
 ### supported features
-1. Built-in components: React (TODO: HTML, Svelte?)
+1. Built-in components: React (TODO: HTML, Svelte?) (try out HTML import and plain JS for pages/base)
 2. State management using plain state hooks
 3. runtime validation: onChange, onSubmit
 
