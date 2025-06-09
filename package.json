@@ -8,8 +8,7 @@
   "scripts": {
     "build-old": "rm -rf pages/lib/* && cp index.js pages/lib/form-flow-builder.js && cp node_modules/js-yaml/dist/js-yaml.mjs pages/lib/js-yaml.js",
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "http-server ./pages",
+    "start": "rollup -c -w",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.js"
   },
   "repository": {
