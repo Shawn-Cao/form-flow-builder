@@ -38,5 +38,5 @@ I think this is the best way to describe a form:
 3. hold form def/value/error object and importable from anywhere (helps with validation) (React needs to useEffect?)
     - For this to work, we add tentative input when error comes, and block(?) nagivation on error
 4. integration test helpers (where own tests can't cover. eg, accept URL params and localStorage)
-5. build-time validation
+5. build-time form spec/schema validation
 6. field annotations: pristine, prepopulated, reviewed, ...

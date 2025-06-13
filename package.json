@@ -2,7 +2,7 @@
   "name": "form-flow-builder",
   "version": "0.1.0",
   "description": "something helpful for dynamic forms, to be updated",
-  "main": "main.cjs.js",
+  "main": "main.cjs",
   "type": "module",
   "module": "main.js",
   "scripts": {
