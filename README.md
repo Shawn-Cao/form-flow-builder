@@ -6,11 +6,11 @@ Trying to generalize something out of a few projects using dynamic forms
 3. More on the schema language, I should prob make it nested, with top level defining the form data structure.
 4. The basic features should be easy to use and learn.
 5. Careful with bundle size. Must support tree shaking with good examples
-
+6. Especially these days with AI assisted development, this form lib should focus on intentions, similar to instructions to LLMs.
 
 # New (current) prologue
 (should be extended)
-From what I learned, I do believe that a form can be expressed with rigorous and normalized language, so that programmes based on the form specification behavies determinitsically. But, in reality, the expression easily becomes lengthy and uncomprehendable to humans. Given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are layered(?), with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
+From what I learned, I do believe that a form can be expressed with rigorous and normalized language, so that programmes based on the form specification behavies determinitsically. But, in reality, the expression easily becomes lengthy and uncomprehendable to humans. Given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are vague, and iterational with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
 
 I think this is the best way to describe a form:
 
