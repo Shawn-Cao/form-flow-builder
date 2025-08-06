@@ -5,6 +5,10 @@ The module is at the root, for npm publish. Dev stuffs are excluded from publish
 - /pages - demo app, hosted on github
 - /tests - e2e tests leveraging /pages
 
+## local development set up
+
+1. run `npm install` to install dependencies
+2. run `npm build` to compile the library. Or, run `npm start` here at the root, then install and start a child project in /pages (in another terminal)
 
 ## Code paths
 
