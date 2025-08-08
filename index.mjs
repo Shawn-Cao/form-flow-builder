@@ -1,4 +1,2 @@
-import { Form } from './lib/react-ui.js';
-
-export const FormReact = Form;
+export { FormReact } from './lib/form-ui-react.js';
 
