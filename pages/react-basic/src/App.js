@@ -3,7 +3,7 @@ import './App.css';
 
 // create-react-app doesn't compile jsx in libraryes, importing partially compiled instead.
 import { FormReact as Form } from 'form-flow-builder/main.js';
-import { demoFormSpec, multiPageForm, dynamicFormSpec } from 'form-flow-builder/lib/form-spec-demos.js';
+import { demoFormSpec, multiPageForm, dynamicSpecForm, shoppingForm } from 'form-flow-builder/lib/form-spec-demos.js';
 
 let lastWorkingSpec = demoFormSpec;
 
@@ -33,10 +33,11 @@ function App() {
 
       <section className="App-section form-spec">
         <p><label>pre-made demo specs: 
-          <select name="demos" onChange={e => setFormSpec(e.target.value)}>
+          <select name="demos" defaultValue={JSON.stringify(multiPageForm, null, 2)} onChange={e => setFormSpec(e.target.value)}>
             <option value={JSON.stringify(demoFormSpec, null, 2)}>Basic</option>
             <option value={JSON.stringify(multiPageForm, null, 2)}>Multi Page</option>
-            <option value={JSON.stringify(dynamicFormSpec, null, 2)}>Dynamic Specs</option>
+            <option value={JSON.stringify(dynamicSpecForm, null, 2)}>Dynamic Specs</option>
+            <option value={JSON.stringify(shoppingForm, null, 2)}>Shopping Order Form</option>
           </select>
         </label></p>
         <textarea name="custom" value={formSpec} onChange={e => setFormSpec(e.target.value)} style={{height: '20em', width: '90%'}} />
