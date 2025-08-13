@@ -33,7 +33,7 @@ function App() {
 
       <section className="App-section form-spec">
         <p><label>pre-made demo specs: 
-          <select name="demos" defaultValue={JSON.stringify(multiPageForm, null, 2)} onChange={e => setFormSpec(e.target.value)}>
+          <select name="demos" onChange={e => setFormSpec(e.target.value)}>
             <option value={JSON.stringify(demoFormSpec, null, 2)}>Basic</option>
             <option value={JSON.stringify(multiPageForm, null, 2)}>Multi Page</option>
             <option value={JSON.stringify(dynamicSpecForm, null, 2)}>Dynamic Specs</option>
