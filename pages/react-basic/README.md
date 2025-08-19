@@ -4,7 +4,7 @@
 
 <!-- 1. added library source code path to babel transpiling lib modules for faster development cycle. ie. added `include: [paths.appSrc, formLibSrc]` in webpack config when resolving files through babel-loader. -->
 1. Partially compile source so react-scripts (in create-react-app) can load the library 
-2. to develop on local, run `npm link && npm link pages/react-basic/node_modules/react` at project root before npm install to fix [this issue](https://react.dev/warnings/invalid-hook-call-warning). (Or try `npm instal --production` when testing apps in /pages)
+2. To develop on local, run `npm link && npm link pages/react-basic/node_modules/react` at project root before npm install to fix [this issue](https://react.dev/warnings/invalid-hook-call-warning). This causes the build artifact (main.js) to contain 3k+ lines of code which include a copy of react. (Or try `npm instal --production` when testing apps in /pages)
 
 ### original README below
 

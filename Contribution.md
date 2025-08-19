@@ -19,3 +19,6 @@ The module is at the root, for npm publish. Dev stuffs are excluded from publish
     3. render with selected UI lib (React/HTML/...)
     4. recursively look at `fields` property to render child nodes
 
+## Note on event handling
+
+This library leverages traditional even bubbling to delegate form change events up to the <form> element to handle.

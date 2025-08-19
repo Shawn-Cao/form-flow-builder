@@ -25,3 +25,26 @@
   display: block;
   margin: 5px;
 }
+
+form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.form-control {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-control button {
+  margin: 0 2em;
+}
+
+.form-group {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0 2em;
+  border: thin solid;
+}
