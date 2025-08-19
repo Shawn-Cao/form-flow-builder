@@ -8,7 +8,7 @@ The module is at the root, for npm publish. Dev stuffs are excluded from publish
 ## local development set up
 
 1. run `npm install` to install dependencies
-2. run `npm build` to compile the library. Or, run `npm start` here at the root, then install and start a child project in /pages (in another terminal)
+2. run `npm build` to compile the library. Or, run `npm start` here at the root, then start a child project in /pages (see corresponding pages/[project]/README.md for details)
 
 ## Code paths
 
