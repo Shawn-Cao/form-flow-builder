@@ -34,9 +34,9 @@ I think this is the best way to describe a form:
 1. Built-in components: React (TODO: HTML, Svelte?) (try out HTML import and plain JS for pages/base)
 2. State management using plain state hooks
 3. runtime validation: onChange, onSubmit
+4. Multi-page UI with dynamic routing
 
 ### planned features
-1. Multi-page UI with dynamic routing
 2. Mirror React-hook-form behavior since we take full responsibility. Support all through options
 3. hold form def/value/error object and importable from anywhere (helps with validation) (React needs to useEffect?)
     - For this to work, we add tentative input when error comes, and block(?) nagivation on error
