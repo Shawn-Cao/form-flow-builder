@@ -40,7 +40,7 @@ jobs:
           npm ci
           npm run build
       - run: |
-          npm ci
+          npm ci --production
           npm run build
           rm -rf ./node_modules
         working-directory: ./pages/react-basic
