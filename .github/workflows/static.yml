@@ -36,11 +36,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm ci
-      - run: npm run build
-      - run: npm ci
-        working-directory: ./pages/react-basic
-      - run: npm run build
+      - run: |
+          npm ci
+          npm run build
+      - run: |
+          npm ci
+          npm run build
+          rm -rf ./node_modules
         working-directory: ./pages/react-basic
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
