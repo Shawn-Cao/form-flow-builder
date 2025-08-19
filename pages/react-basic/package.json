@@ -1,5 +1,6 @@
 {
   "name": "create-react-app",
+  "homepage": "https://shawn-cao.github.io/form-flow-builder/react-basic/build/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
