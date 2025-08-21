@@ -21,4 +21,4 @@ The module is at the root, for npm publish. Dev stuffs are excluded from publish
 
 ## Note on event handling
 
-This library leverages traditional even bubbling to delegate form change events up to the <form> element to handle.
+This library leverages native event bubbling mechanism to delegate form change events up to the <form> element to handle.

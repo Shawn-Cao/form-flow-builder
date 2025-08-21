@@ -6,8 +6,8 @@
     <script type="importmap">
         {
             "imports": {
-              "form-flow-builder": "./lib/form-flow-builder.js",
-              "js-yaml": "./lib/js-yaml.js"
+              "form-flow-builder": "./node_modules/form-flow-builder/main.js",
+              "form-spec-demo": "./node_modules/form-flow-builder/lib/form-spec-demos.js",
             }
         }        
     </script>
@@ -15,13 +15,20 @@
 </head>
 <body>
     <h1>simple form</h1>
-    <div id="my-form"></div>
+    <form id="my-form"></form>
     <script type="module">
-        import { render } from "form-flow-builder";
-        fetch('./form.yaml')
-            .then(response => response.text())
-            .then(yaml => render('my-form', yaml))
-            .catch(console.error)
+        import { demoFormSpec, multiPageForm, dynamicSpecForm, shoppingForm } from 'form-flow-builder/lib/form-spec-demos.js';
+        import formBuilder from "form-flow-builder/html";
+        let schema = demoFormSpec;
+        let form = formBuilder.build(schema, {
+            formName: undefined,
+            data: undefined,
+            components: undefined,
+            idMapper: undefined,
+        }); 
+        // TODO: handle SSR hydration scenario
+        form.render('my-form');
+        // TODO: add a demo spec selector
     </script>
 </body>
 </html>

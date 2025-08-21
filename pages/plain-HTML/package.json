@@ -1,0 +1,22 @@
+{
+  "name": "demo-using-plain-html",
+  "homepage": "https://shawn-cao.github.io/form-flow-builder/plain-html/",
+  "version": "1.0.0",
+  "description": "form-flow-builder demo using plain HTML. Ingest JSON and spit out plain HTML. Attach to any page to use. Native events are used and no additiona JavaScript necessary",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+    "dependencies": {
+    "form-flow-builder": "file:../.."
+  }
+}

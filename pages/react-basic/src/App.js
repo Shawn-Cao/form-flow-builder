@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// create-react-app doesn't compile jsx in libraryes, importing partially compiled instead.
-import { FormReact as Form } from 'form-flow-builder/main.js';
+// create-react-app's webpack config doesn't compile jsx in libraries, importing partially compiled instead.
+import { FormReact as Form } from 'form-flow-builder/react.js';
 import { demoFormSpec, multiPageForm, dynamicSpecForm, shoppingForm } from 'form-flow-builder/lib/form-spec-demos.js';
 
 let lastWorkingSpec = demoFormSpec;

@@ -47,6 +47,10 @@ jobs:
           npm run build
           rm -rf ./node_modules
         working-directory: ./pages/react-basic
+      - run: |
+          npm run build
+          rm -rf ./node_modules
+        working-directory: ./pages/plain-HTML
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
