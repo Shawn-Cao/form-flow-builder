@@ -7,7 +7,8 @@
         {
             "imports": {
               "form-flow-builder": "./node_modules/form-flow-builder/main.js",
-              "form-spec-demo": "./node_modules/form-flow-builder/lib/form-spec-demos.js",
+              "form-flow-builder/html": "./node_modules/form-flow-builder/html.js",
+              "form-spec-demo": "./node_modules/form-flow-builder/lib/form-spec-demos.js"
             }
         }        
     </script>
@@ -17,17 +18,17 @@
     <h1>simple form</h1>
     <form id="my-form"></form>
     <script type="module">
-        import { demoFormSpec, multiPageForm, dynamicSpecForm, shoppingForm } from 'form-flow-builder/lib/form-spec-demos.js';
         import formBuilder from "form-flow-builder/html";
+        import { demoFormSpec, multiPageForm, dynamicSpecForm, shoppingForm } from 'form-spec-demo';
         let schema = demoFormSpec;
         let form = formBuilder.build(schema, {
             formName: undefined,
             data: undefined,
             components: undefined,
             idMapper: undefined,
-        }); 
+        });
         // TODO: handle SSR hydration scenario
-        form.render('my-form');
+        formBuilder.render(form, '#my-form');
         // TODO: add a demo spec selector
     </script>
 </body>

@@ -111,14 +111,15 @@ const merge = (target, source) => {
  * source of truth when working with other stateful libraries like react
  */
 class Form {
-  constructor(spec, data, customization = {}) {
+  constructor(spec, customization = {}) {
     this.spec = spec ?? {};
-    this.data = initializeData(spec, data);
     const {
       name,
+      data,
       components,
       idMapper
     } = customization;
+    this.data = initializeData(spec, data);
     this.name = name || 'form-flow-builder';
     this.components = components;
     this.idMapper = idMapper;
