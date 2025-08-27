@@ -205,6 +205,22 @@ class Form {
   }
 }
 
+const SubmitButton = () => {
+  const wrapper = document.createElement('div');
+  const submitElement = document.createElement('input');
+  submitElement.setAttribute('type', 'submit');
+  submitElement.setAttribute('value', 'Submit');
+  wrapper.appendChild(submitElement);
+  return wrapper;
+};
+const handleSubmit = event => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const json = Object.fromEntries(formData.entries());
+  console.log('formData', Object.fromEntries(formData.entries()));
+  window.alert(JSON.stringify(json, null, 2));
+};
+
 // functional style HTML components
 
 
@@ -212,7 +228,6 @@ class Form {
 const TextInput = ({
   name,
   id,
-  required,
   value,
   onChange,
   error = "",
@@ -220,37 +235,85 @@ const TextInput = ({
     description,
     defaultValue,
     placeholder,
+    required,
     readOnly
   }
 }) => {
   if (!value && defaultValue) {
     value = defaultValue;
   }
-  return /*#__PURE__*/React.createElement("label", {
-    htmlFor: id
-  }, /*#__PURE__*/React.createElement("span", null, description || `${name}: `), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-    name: name,
-    id: id,
-    type: "text",
-    "aria-label": name,
-    required: required,
-    placeholder: placeholder,
-    disabled: readOnly,
-    value: value,
-    onChange: onChange
-  }), /*#__PURE__*/React.createElement("span", {
-    className: error ? "error active" : "error",
-    "aria-live": "polite"
-  }, error));
+  const wrapper = document.createElement('label');
+  wrapper.setAttribute("htmlFor", id);
+  wrapper.appendChild(document.createTextNode(description || `${name}: `));
+  wrapper.appendChild(document.createElement('br'));
+  const input = document.createElement('input');
+  input.setAttribute('name', name);
+  input.setAttribute('id', id);
+  input.setAttribute('type', 'text');
+  input.setAttribute('aria-label', name);
+  if (required) {
+    input.setAttribute('placeholder', placeholder);
+  }
+  if (required) {
+    input.setAttribute('required', true);
+  }
+  if (readOnly) {
+    input.setAttribute('disabled', true);
+  } // common practice 
+  if (value) {
+    input.setAttribute('value', value);
+  }
+  wrapper.appendChild(input);
+  return wrapper;
+};
+const NumberInput = ({
+  name,
+  id,
+  value,
+  onChange,
+  error = "",
+  fieldSpec: {
+    description,
+    defaultValue,
+    placeholder,
+    required,
+    readOnly
+  }
+}) => {
+  if (!value && defaultValue) {
+    value = defaultValue;
+  }
+  const wrapper = document.createElement('label');
+  wrapper.setAttribute("htmlFor", id);
+  wrapper.appendChild(document.createTextNode(description || `${name}: `));
+  wrapper.appendChild(document.createElement('br'));
+  const input = document.createElement('input');
+  input.setAttribute('name', name);
+  input.setAttribute('id', id);
+  input.setAttribute('type', 'number');
+  input.setAttribute('aria-label', name);
+  if (required) {
+    input.setAttribute('placeholder', placeholder);
+  }
+  if (required) {
+    input.setAttribute('required', true);
+  }
+  if (readOnly) {
+    input.setAttribute('disabled', true);
+  } // common practice 
+  if (value) {
+    input.setAttribute('value', value);
+  }
+  wrapper.appendChild(input);
+  return wrapper;
 };
 
-// NOTE: how to manage widgets live using plain JS? No support for now
-
 const builtInComponents = {
+  // TODO: implement others
   // composite: NestedInput,
   // repeated: ListInput,
-  string: TextInput
-  // number: NumberInput,
+  string: TextInput,
+  number: NumberInput
   // boolean: BooleanInput,
   // select: SelectInput,
 };
@@ -277,7 +340,7 @@ const findComponent = ({
       return builtInComponents.string;
     default:
       console.warn(`Component not found! Field specified type "${type}" does not match to a built-in component, you can create your own one.`);
-      return () => {};
+      return builtInComponents.string;
   }
 };
 const formFLowBuilder = {
@@ -289,9 +352,9 @@ const formFLowBuilder = {
     const form = Form.get(options.name) ?? new Form(formSpec, options);
     return form;
   },
-  render: (rootSelector, form) => {
-    document.querySelector(rootSelector);
-    console.log('fields ', form.orderedFields);
+  render: (form, formSelector) => {
+    const formElement = document.querySelector(formSelector);
+    console.log('form root', formElement, 'fields ', form.orderedFields);
     form.orderedFields.forEach(fieldSpec => {
       const {
         type,
@@ -301,17 +364,31 @@ const formFLowBuilder = {
       const id = form.getFieldId(name);
       const formData = form.data = {};
       // NOTE: decide if we should make it React-like declarative call?
-      return component.call(form, {
+      const fieldElement = component({
+        fieldSpec,
         name,
         id,
         value: formData[name],
         errors: form.errors
       });
+      formElement.appendChild(fieldElement);
     });
+    // TODO: append layout element which contains submit button, plus pagination & navigation buttons
+    formElement.appendChild(SubmitButton());
+    // NOTE: HTML native event is used to handle change and submit.
+    // TODO: Should we provide options to handle change like in the react ui?
+    //   getting data and managing tracking should already work through form 
+    // formElement.addEventListener('change');
+    formElement.addEventListener('submit', handleSubmit);
+  },
+  clear: formSelector => {
+    const formElement = document.querySelector(formSelector);
+    formElement.replaceChildren();
   }
 };
 
 exports.Form = Form;
+exports.FormHTML = formFLowBuilder;
 exports.builtInComponents = builtInComponents;
 exports.default = formFLowBuilder;
 exports.formFLowBuilder = formFLowBuilder;

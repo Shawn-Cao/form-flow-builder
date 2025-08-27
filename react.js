@@ -210,7 +210,6 @@ class Form {
 const TextInput = ({
   name,
   id,
-  required,
   value,
   onChange,
   error = "",
@@ -218,6 +217,7 @@ const TextInput = ({
     description,
     defaultValue,
     placeholder,
+    required,
     readOnly
   }
 }) => {
@@ -246,13 +246,13 @@ const TextInput = ({
 const NumberInput = ({
   name,
   id,
-  required,
   value,
   onChange,
   error = "",
   fieldSpec: {
     description,
-    defaultValue = 0
+    defaultValue = 0,
+    required
   }
 }) => {
   return /*#__PURE__*/React.createElement("label", {
@@ -273,13 +273,13 @@ const NumberInput = ({
 const BooleanInput = ({
   name,
   id,
-  required,
   value = '',
   onChange,
   error = "",
   fieldSpec: {
     description,
-    options = []
+    options = [],
+    required
   }
 }) => {
   return /*#__PURE__*/React.createElement("label", {
@@ -298,13 +298,13 @@ const BooleanInput = ({
 const SelectInput = ({
   name,
   id,
-  required,
   value = '',
   onChange,
   error = "",
   fieldSpec: {
     description,
-    options = []
+    options = [],
+    required
   }
 }) => {
   return /*#__PURE__*/React.createElement("label", {
@@ -462,6 +462,7 @@ const ListInput = props => {
   }, "Add"), /*#__PURE__*/React.createElement("ul", null, value.map(item => /*#__PURE__*/React.createElement("li", null, JSON.stringify(item, null, 2)))));
 };
 const builtInComponents = {
+  composite: NestedInput,
   repeated: ListInput,
   string: TextInput,
   number: NumberInput,
@@ -478,31 +479,32 @@ function findReactComponent({
     return directlyMatched;
   }
   if (options) {
-    return SelectInput;
+    return builtInComponents.select;
   }
   switch (type) {
     case 'composite':
-      return NestedInput;
+      return builtInComponents.composite;
     //   TODO: handle grouped input. eg. card.color & card.text
     // return ;
     case 'ID':
     case 'phoneNumber':
     case 'email':
-      return TextInput;
+      return builtInComponents.string;
     default:
       console.warn(`Component not found! Field specified type "${type}" does not match to a built-in component, you can create your own one.`);
       return () => {};
   }
 }
 
-const useForm = (formSpec, initialData, formName, components, idMapper) => {
-  const form = Form.get(formName) ?? new Form(formSpec, initialData, {
+const useForm = (formSpec, components, data, formName, idMapper) => {
+  const form = Form.get(formName) ?? new Form(formSpec, {
     name: formName,
+    data,
     components,
     idMapper
   });
   // NOTE: a copy of form data is kept in React for change detection
-  const [data, setData] = useState(form.data);
+  const [formData, setFormData] = useState(form.data);
 
   // allows data override through parent data change
   const [lastFormSpec, setLastFormSpec] = useState(formSpec);
@@ -519,8 +521,8 @@ const useForm = (formSpec, initialData, formName, components, idMapper) => {
   // };
   return {
     form,
-    data,
-    setData,
+    data: formData,
+    setData: setFormData,
     errors: form.errors
   };
 };
