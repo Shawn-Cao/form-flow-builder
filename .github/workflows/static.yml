@@ -48,6 +48,7 @@ jobs:
           rm -rf ./node_modules
         working-directory: ./pages/react-basic
       - run: |
+          npm ci
           npm run build
           rm -rf ./node_modules
         working-directory: ./pages/plain-HTML
