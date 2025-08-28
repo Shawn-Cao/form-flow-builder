@@ -1,6 +1,6 @@
 // @global 
 
-
+// NOTE: this file is not used. I'm jus thinking to write a simple JSX to HTML mapper for plain HTML. Should be better to find a good library for that.
 // TODO: move this to package root when a build script is set up
 import jsYaml from 'js-yaml';
 

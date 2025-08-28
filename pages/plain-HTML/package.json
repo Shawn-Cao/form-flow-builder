@@ -9,14 +9,17 @@
   },
   "scripts": {
     "start": "live-server",
+    "build": "copyfiles -u 1 node_modules/form-flow-builder/html.js node_modules/form-flow-builder/lib/form-spec-demos.js lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "copyfiles": "^2.4.1",
+    "live-server": "^1.2.2",
+    "rimraf": "^6.0.1"
   },
-    "dependencies": {
+  "dependencies": {
     "form-flow-builder": "file:../.."
   }
 }

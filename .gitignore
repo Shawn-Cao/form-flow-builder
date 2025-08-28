@@ -2,3 +2,7 @@ pages/lib/
 node_modules
 main.js
 main.cjs
+html.js
+html.cjs
+react.js
+react.cjs
