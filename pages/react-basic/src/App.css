@@ -31,6 +31,20 @@ form {
   margin: 0 auto;
 }
 
+form ul {
+  display: block;
+  margin: 0 0;
+}
+form li {
+  display: inline;
+  border: thin solid black;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+form sup:hover {
+  color: red;
+}
+
 .form-control {
   display: flex;
   justify-content: space-evenly;
