@@ -37,6 +37,9 @@ I think this is the best way to describe a form:
 3. runtime validation: onChange, onSubmit
 4. Multi-page UI with dynamic routing
 
+## Thoughts (To be addressed)
+- add "goal" config. eg. the default goal is to gather information as much as possible. But a decision goal could terminate early as long as a (preferable) decision is made
+
 ### planned features
 2. Mirror React-hook-form behavior since we take full responsibility. Support all through options
 3. hold form def/value/error object and importable from anywhere (helps with validation) (React needs to useEffect?)
