@@ -14,6 +14,9 @@ Trying to generalize something out of a few projects using dynamic forms
 
 (should be extended here)
 From what I learned, I do believe that a form can be expressed with rigorous and normalized language, so that programmes based on the form specification behavies determinitsically. But, in reality, the expression easily becomes lengthy and uncomprehendable to humans. Given that IRS 1040 takes 100+ pages to explain, which still requires experts interpreation. So, we take in the fact that human perceptions are vague, and iterational with different focus levels. Hence a practical expression should also leverage both normalized language as well as liberal but less accurate expressions.
+
+Form UI should be [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) naturally. But form interactions shouldn't require playing around to be fully understood. That's where a schema is useful. - That's also why only the interaction party is needed in the schema.
+
 ### A Note to myself: looking at Web Components, maybe we could publish something like <flow-form fields="[name, age, class]"><template .../></flow-form>
 
 I think this is the best way to describe a form:
@@ -44,3 +47,4 @@ I think this is the best way to describe a form:
 4. integration test helpers (where own tests can't cover. eg, accept URL params and localStorage)
 5. build-time form spec/schema validation
 6. field annotations: pristine, prepopulated, reviewed, ...
+7. I'm looking at mortgage decisionAdd a prompt interface to create/improve form schema, create components. Test out and present UI?
